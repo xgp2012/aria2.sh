@@ -116,7 +116,7 @@ Download_aria2() {
         echo -e "${Info} 删除旧版 Aria2 二进制文件..."
         rm -vf $(which aria2c)
     done
-    DOWNLOAD_URL="https://github.com/P3TERX/Aria2-Pro-Core/releases/download/${aria2_new_ver}/aria2-${aria2_new_ver%_*}-static-linux-${ARCH}.tar.gz"
+    DOWNLOAD_URL="https://gh-proxy.org/https://github.com/P3TERX/Aria2-Pro-Core/releases/download/${aria2_new_ver}/aria2-${aria2_new_ver%_*}-static-linux-${ARCH}.tar.gz"
     {
         wget -t2 -T3 -O- "${DOWNLOAD_URL}" ||
             wget -t2 -T3 -O- "https://gh-proxy.org/${DOWNLOAD_URL}"
@@ -179,7 +179,7 @@ Service_aria2() {
         chkconfig --add aria2
         chkconfig aria2 on
     else
-        wget -N -t2 -T3 "https://raw.githubusercontent.com/P3TERX/aria2.sh/master/service/aria2_debian" -O /etc/init.d/aria2 ||
+        wget -N -t2 -T3 "https://gh-proxy.org/https://raw.githubusercontent.com/P3TERX/aria2.sh/master/service/aria2_debian" -O /etc/init.d/aria2 ||
             wget -N -t2 -T3 "https://cdn.jsdelivr.net/gh/P3TERX/aria2.sh@master/service/aria2_debian" -O /etc/init.d/aria2 ||
             wget -N -t2 -T3 "https://gh-raw.p3terx.com/P3TERX/aria2.sh/master/service/aria2_debian" -O /etc/init.d/aria2
         [[ ! -s /etc/init.d/aria2 ]] && {
